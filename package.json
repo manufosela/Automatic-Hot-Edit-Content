@@ -1,0 +1,37 @@
+{
+  "name": "automatic_hot_edit_content",
+  "version": "1.0.0",
+  "description": "Automatic Hot Edit Content",
+  "main": "EditContent.js",
+  "scripts": {
+    "build": "rm -rf build && mkdir build && rollup -c",
+    "start": "es-dev-server --app-index /demo/index.html --node-resolve --watch --open", 
+    "start:api": "node demo/api/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manufosela/Automatic-Form-Validation.git"
+  },
+  "keywords": [
+    "edit",
+    "content"
+  ],
+  "author": "@manufosela",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "eslint": "^7.13.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
+    "@babel/plugin-proposal-decorators": "^7.2.3",
+    "es-dev-server": "^1.46.0",
+    "rollup": "^1.1.0",
+    "rollup-plugin-babel": "^4.3.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-terser": "^5.1.3"
+  }
+}

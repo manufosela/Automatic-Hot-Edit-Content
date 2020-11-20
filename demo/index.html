@@ -1,0 +1,21 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Automatic Hot Edit Content</title>
+  <script src="../EditContent.js"></script>
+</head>
+<body>
+  <script>
+    const config = {
+      getDataJson: 'http://localhost:3000/data',
+      putDataJson: 'http://localhost:3000/data',
+      page: 'target.html'
+    }
+    function onload() {
+      const editContent = new EditContent(config);
+    }
+    window.onload = onload();
+  </script>
+</body>
+</html>

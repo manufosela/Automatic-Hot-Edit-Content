@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Target to Test</title>
+  <style>
+    *, *:before, *:after { box-sizing: inherit; }
+    html, body { margin:0; padding:0; }
+    header nav { display:flex; background:rgba(255,30,0,0.5); width:100vw; padding:20px 0; }
+    header nav a { margin:0 10px; text-decoration: none; background:#F30; padding:5px; color:#000; font-weight:bold; border-radius: 10px; }
+    header nav a:hover { color:#F30; background:#000; }
+    main { padding: 20px; }
+    main .content { display: flex; }
+    main .content .block { margin:20px; }
+    main .content img { max-width:100px; max-height:100px; display:block; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav data-id="obj-header">
+      <a data-id="link-nuestrosServicios" href="nuestroservicios.html">Nuestros Servicios</a>
+      <a data-id="link-sobreNosotros" href="sobrenosotros.html">Sobre nosotros</a>
+      <a data-id="link-unete" href="join-us.html">UNETE</a>
+      <a data-id="link-leadTheChange" href="https://leadthechange.es/">LEAD THE CHANGE</li>
+      <a data-id="link-contacto" href="contact.html">CONTACTO</a>
+    </nav>
+  </header>
+  <main data-id="obj-main">
+    <h1 data-id="txt-title">¿Qué hacemos?</h1>
+    <h2 data-id="txt-subtitle">Nuestros servicios</h2>
+    <div class="content" data-id="arr-icons">
+      <div class="block">
+        <img data-id="img-imageIcon1" src="images/icon-agile.png" alt="Transformación Agile">
+        <span data-id="txt-imageTitle1">Agile Transformation</span>
+      </div>
+      <div class="block">
+        <img data-id="img-imageIcon2" src="images/icon-development.png" alt="Desarrollo de Software">
+        <span data-id="txt-imageTitle2">Software Development</span>
+      </div>
+      <div class="block">
+        <img data-id="img-imageIcon3" src="images/icon-ux-design.webp" alt="Experiencia de Usuario y Diseño">
+        <span data-id="txt-imageTitle3">User Experience &amp; Design</span>
+      </div>
+      <div class="block">
+        <img data-id="img-imageIcon4" src="images/icon-devops.jpg" alt="Arquitectura y Devops">
+        <span data-id="txt-imageTitle4">Devops &amp; Architecture</span>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

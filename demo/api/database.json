@@ -1,0 +1,58 @@
+{
+  "obj-header": {
+    "link-nuestrosServicios": {
+      "text": "NUESTROS SERVICIOS",
+      "href": "nuestroservicios.html"
+    },
+    "link-sobreNosotros": {
+      "text": "SOBRE NOSOTROS",
+      "href": "sobrenosotros.html"
+    },
+    "link-unete": {
+      "text": "ÚNETE",
+      "href": "join-us.html"
+    },
+    "link-leadTheChange": {
+      "text": "LIDERA EL CAMBIO",
+      "href": "https://leadthechange.es/"
+    },
+    "link-contacto": {
+      "text": "CONTACTO",
+      "href": "contact.html"
+    }
+  },
+  "obj-main": {
+    "txt-title": "¿Qué hacemos?",
+    "txt-subtitle": "Nuestros servicios",
+    "arr-icons": [
+      {
+        "img-imageIcon1": {
+          "txt-src": "images/icon-agile.png",
+          "txt-alt": "Transformación Agile"
+        },
+        "txt-imageTitle1": "Agile Transformation"
+      },
+      {
+        "img-imageIcon2": {
+          "txt-src": "images/icon-development.png",
+          "txt-alt": "Software Development"
+        },
+        "txt-imageTitle2": "Software Development"
+      },
+      {
+        "img-imageIcon3": {
+          "txt-src": "images/icon-ux-design.webp",
+          "txt-alt": "Experiencia de Usuario y Diseño"
+        },
+        "txt-imageTitle3": "User Experience &amp; Design"
+      },
+      {
+        "img-imageIcon4": {
+          "txt-src": "images/icon-devops.jpg",
+          "txt-alt": "Arquitectura y Devops"
+        },
+        "txt-imageTitle4": "Devops &amp; Architecture"
+      }
+    ]
+  }
+}
