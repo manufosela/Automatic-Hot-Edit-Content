@@ -18,6 +18,10 @@ class EditContent {
       this.markContentEditable();
     }
 
+    this.initializeModal();
+  }
+
+  initializeModal() {
     this.modalHTML = document.createElement('div');
     this.modalHTML.dataset.popupModal = 'one';
     this.modalHTML.classList.add('modal');
