@@ -1,0 +1,294 @@
+<style>
+    * {
+      box-sizing: border-box;
+    }
+    .dark-line {
+      width:2cm;
+      margin-top:-15px;
+      margin-left:0.5cm;
+      border-top:5px solid #333;
+    }
+    .hard-line {
+      width:3cm;
+      margin-left:1cm;
+      border-top:5px solid #e98523;
+    }
+    .cols-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    main {
+      font-size:100%;
+      display: flex;
+      flex-direction: row;
+      width: 21cm;
+      min-height: 29.7cm;
+      margin: 1cm auto;
+      border: 1px #d3d3d3 solid;
+      border-radius: 5px;
+      background: white;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+    section {
+      display: flex;
+      flex-direction: column;
+      padding: 1cm;
+    }
+
+    aside {
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      width: 35%;
+      background: #e98523;
+    }
+    aside .recuadro-foto {
+      margin:0.5cm;
+      padding:0.5cm;
+      background:#FFF;
+      text-align:center;
+      border-bottom:0.5cm solid #37F;
+    }
+    aside .foto {
+      max-width: 5cm;
+      max-height: 5cm;
+      border:1px solid gray;
+      margin:0.5cm 0;
+    }
+    aside .resumen-foto {
+      font-size:1.4rem;
+    }
+    aside h2 {
+      width: 100%;
+      margin-left:0.5cm;
+      padding:0;
+    }
+    aside .listado-principal {
+      list-style: none;
+      color: #FFF;
+      font-size:1.3rem;
+    }
+    aside .listado {
+      list-style: none;
+      color: #FFF;
+      font-size:1rem;
+    }
+
+
+    header {
+      width:100%;
+      text-align: right;
+      margin-bottom:1cm;
+    }
+    header .logo {    
+      max-height:1cm;
+      margin:0.5cm;
+    }
+
+    section.datos {
+      margin:0;
+      padding:0;
+    }
+    section.datos section {
+      margin:0;
+      padding-bottom:0;
+    }
+    section .saludo {
+      font-size:2rem;
+      font-weight:bold;
+    }
+    section.principal .soy {
+      font-size:2rem;
+      display:flex;
+      flex-direction:row;
+    }
+    section.principal h1  { margin:10px 10px 0 10px; font-size:2rem; color:#44e7bc }
+    section.principal span { margin:12px 0 0 0; }
+    section.principal .descripcion { margin: 0.5cm 0 0 0.5cm; } 
+
+    section h2 { font-weight:400;}
+    section.formacion ul {
+      list-style: none;
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      padding-left:0.5cm;
+    }
+    section.formacion .year {
+      color:gray;
+      font-size:0.8rem;
+    }
+    section.formacion .titulo {
+      font-weight:800;
+    }
+
+    section.cursos ul {
+      list-style: none;
+      padding-left:0.5cm;
+    }
+    section.cursos ul li {
+      margin-bottom:0.5cm;
+    }
+    section.cursos .lugarfecha {
+      color:gray;
+      font-size:0.8rem;
+    }
+    section.cursos .nombrecurso {
+      font-weight:800;
+      text-transform: uppercase;
+    }
+
+    section.experiencia ul {
+      list-style: none;
+      padding-left:0.5cm;
+    }
+    section.experiencia .fecha {
+      color:gray;
+      font-size:0.8rem;
+    }
+    section.experiencia .cargo {
+      font-weight:800;
+    }
+    section.experiencia .tecnologias {
+      font-weight:800;
+      margin-top:0.3cm;
+    }
+    section.experiencia .descripcion {
+      margin:0.3cm 0 1cm 0;
+    }
+
+</style>
+
+<main>
+  <aside>
+    <div class="recuadro-foto">
+      <img class="foto" data-id="foto" src="tu_foto.png" alt="foto"  />
+      <div class="resumen-foto" data-id="resumen-tu">Fullstack Developer... tu cargo en 3 líneas máximo </div>
+    </div>
+    <h2>Tecnologías</h2>
+    <div class="dark-line"></div>
+    <ul class="listado-principal" data-id="tecnologias-destacas" data-add="true">
+      <li data-id="0">Angular 11</li>
+      <li data-id="0">Java 14</li>
+      <li data-id="0">MySQL</li>
+    </ul>
+    <ul class="listado cols-2" data-id="otras-tecnologias" data-add="true">
+      <li data-id="0">Conocimiento</li>
+      <li data-id="0">Conocimiento</li>
+      <li data-id="0">Conocimiento</li>
+      <li data-id="0">Conocimiento</li>
+      <li data-id="0">Conocimiento</li>
+      <li data-id="0">Conocimiento</li>
+      <li data-id="0">Conocimiento</li>
+      <li data-id="0">Conocimiento</li>
+      <li data-id="0">Conocimiento</li>
+      <li data-id="0">Conocimiento</li>
+    </ul>
+    <h2>Otros conocimientos</h2>
+    <div class="dark-line"></div>
+    <ul class="listado" data-id="otros-conocimientos" data-add="true">
+      <li data-id="0">Metodologias agile</li>
+      <li data-id="0">Diseño</li>
+      <li data-id="0">Otra cosa</li>
+    </ul>
+    <h2>Idiomas</h2>
+    <div class="dark-line"></div>
+    <ul class="listado-principal"data-id="idiomas" data-add="true">
+      <li data-id="0">Ingles - A2</li>
+      <li data-id="0">Ruso - Nativo</li>
+      <li data-id="0">Suahili - C1</li>
+    </ul>
+  </aside>
+  <section class="datos">
+    <header>
+      <img class="logo" data-id="logo" src="logok.png" alt="logo Kairós" />
+    </header>
+    <section class="principal" id="principal">
+      <div class="saludo" data-id="saludo">Hola.</div>
+      <div class="soy"><span>Soy</span> <h1 class="nombreyapellido" data-id="nombreyapellido">NOMBRE y APELLIDO</h1>
+      </div>
+      <div class="soy" data-id="resumen">Resúmete en una línea</div>
+      <div class="descripcion" data-id="descripcion">Incluye una pequeña descripción de un máximo de 3 líneas sobre ti y tu trayectoria laboral.</div>
+      <div class="hardline"></div>
+    </section>
+    <section class="formacion" id="formacion">
+      <h2>Formación</h2>
+      <ul data-id="formacion">
+        <li data-id="0">
+          <div class="year" data-id="formacion-year">2017</div>
+          <div class="titulo" data-id="formacion-titulo">Tipo de formación en dos líneas.</div>
+        </li>
+        <li data-id="1">
+          <div class="year" data-id="formacion-year">2010-2012</div>
+          <div class="titulo" data-id="formacion-titulo">Título de formación
+          </div>
+        </li>
+      </ul>
+    </section>
+    <div class="hard-line"></div>
+    <section class="cursos" id="cursos">
+      <h2>Cursos y Certificaciones</h2>
+      <ul data-id="cursos" data-add="true">
+        <li data-id="0">
+          <div class="lugarfecha" data-id="lugarfecha">LUGAR Y FECHA</div>
+          <div class="nombrecurso" data-id="nombrecurso">NOMBRE CERTIFICACIÓN/CURSO</div>
+          <div class="descripcioncurso" data-id="descripcioncurso">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </div>
+        </li>
+        <li data-id="1">
+          <div class="lugarfecha" data-id="lugarfecha">LUGAR Y FECHA</div>
+          <div class="nombrecurso" data-id="nombrecurso">NOMBRE CERTIFICACIÓN/CURSO</div>
+          <div class="descripcioncurso" data-id="descripcioncurso">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </div>
+        </li>
+        <li data-id="2">
+          <div class="lugarfecha" data-id="lugarfecha">LUGAR Y FECHA</div>
+          <div class="nombrecurso" data-id="nombrecurso">NOMBRE CERTIFICACIÓN/CURSO</div>
+          <div class="descripcioncurso" data-id="descripcioncurso">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </div>
+        </li>
+        <li data-id="3">
+          <div class="lugarfecha" data-id="lugarfecha">LUGAR Y FECHA</div>
+          <div class="nombrecurso" data-id="nombrecurso">NOMBRE CERTIFICACIÓN/CURSO</div>
+          <div class="descripcioncurso" data-id="descripcioncurso">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </div>
+        </li>
+      </ul>
+    </section>
+    <div class="hard-line"></div>
+    <section class="experiencia" id="experiencia">
+      <h2>Experiencia</h2>
+      <ul data-id="experiencia" data-add="true">
+        <li data-id="0">
+          <div class="fecha" data-id="fecha">MES 2010 - MES 2017</div>
+          <div class="cargo" data-id="cargo-y-empresa">Cargo y empresa</div>
+          <div class="tecnologias">Tecnologías usadas en el proyecto</div>
+          <div class="tecusadas" data-id="tecnologias-usadas">Java, Angular, NodeJS, Express, etc...</div>
+          <div class="descripcion" data-id="descripcion">Descripción de funciones en el proyecto. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+        </li>
+        <li data-id="1">
+          <div class="fecha" data-id="fecha">MES 2010 - MES 2017</div>
+          <div class="cargo"data-id="cargo-y-empresa">Cargo y empresa</div>
+          <div class="tecnologias">Tecnologías usadas en el proyecto</div>
+          <div class="tecusadas" data-id="tecnologias-usadas">Java, Angular, NodeJS, Express, etc...</div>
+          <div class="descripcion" data-id="descripcion">Descripción de funciones en el proyecto. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+        </li>
+        <li data-id="2">
+          <div class="fecha"data-id="fecha">MES 2010 - MES 2017</div>
+          <div class="cargo"data-id="cargo-y-empresa">Cargo y empresa</div>
+          <div class="tecnologias">Tecnologías usadas en el proyecto</div>
+          <div class="tecusadas"data-id="tecnologias-usadas">Java, Angular, NodeJS, Express, etc...</div>
+          <div class="descripcion"data-id="descripcion">Descripción de funciones en el proyecto. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+        </li>
+        <li data-id="3">
+          <div class="fecha"data-id="fecha">MES 2010 - MES 2017</div>
+          <div class="cargo"data-id="cargo-y-empresa">Cargo y empresa</div>
+          <div class="tecnologias">Tecnologías usadas en el proyecto</div>
+          <div class="tecusadas"data-id="tecnologias-usadas">Java, Angular, NodeJS, Express, etc...</div>
+          <div class="descripcion"data-id="descripcion">Descripción de funciones en el proyecto. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+        </li>
+      </ul>
+    </section>
+  </section>
+</main>
