@@ -4,8 +4,8 @@
   "description": "Automatic Hot Edit Content",
   "main": "EditContent.js",
   "scripts": {
-    "build": "rm -rf build && mkdir build && rollup -c",
-    "start": "es-dev-server --app-index /demo/index.html --node-resolve --watch --open", 
+    "build": "rm -rf dist && mkdir dist && rollup -c",
+    "start": "es-dev-server --app-index /demo/index.html --node-resolve --watch --open",
     "start:api": "node demo/api/index.js"
   },
   "repository": {
@@ -33,5 +33,8 @@
     "rollup-plugin-babel": "^4.3.0",
     "rollup-plugin-node-resolve": "^4.0.0",
     "rollup-plugin-terser": "^5.1.3"
+  },
+  "dependencies": {
+    "vanilla-modal-layer": "^1.2.2"
   }
 }

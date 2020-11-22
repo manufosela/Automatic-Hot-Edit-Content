@@ -1,63 +1,68 @@
-class EditContent {
+import { ModalLayer } from './node_modules/vanilla-modal-layer';
+export class EditContent {
   constructor(config) {
     this.config = config || {};
+    this.editableElements = ['DIV', 'SPAN', 'H1', 'H2', 'H3', 'H4', 'H5'];
+
     let errors = false;
-    if (!this.config.dataJson && !this.config.getDataJson) {
-      console.warn('source "dataJson" not found');
-      errors = true;
-    }
-    if (!this.config.putDataJson) {
-      console.warn('source "setDataJson" not found');
-      errors = true;
-    }
     if (!this.config.page) {
       console.warn('page not defined');
       errors = true;
     }
     if (!errors) {
-      this.markContentEditable();
+      this.initEdition();
     }
-
-    this.initializeModal();
+    this.data = [];
+    this.modalLayer = new ModalLayer();
   }
 
-  initializeModal() {
-    this.modalHTML = document.createElement('div');
-    this.modalHTML.dataset.popupModal = 'one';
-    this.modalHTML.classList.add('modal');
-    this.modalHTML.classList.add('shadow');
-    this.modalHTML.innerHTML = '<span class="modal-closeBtn">X</span><div id="modal-content">PRUEBA MODAL</div>';
-    this.bodyBlackedout = document.createElement('div');
-    this.bodyBlackedout.classList.add('blackedout');
-    
-    this.modalStyle = '.modal { height: 365px; width: 650px; background-color: #fff; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); padding: 45px; opacity: 0; pointer-events: none; transition: all 300ms ease-in-out; z-index: 1011; }';
-    this.modalStyleVisible = '.modal-visible { opacity: 1; pointer-events: auto; }';
-    this.modalStyleClose = '.modal-closeBtn { position: absolute; font-size: 1.2rem; right: -10px; top: -10px; cursor: pointer; background:#F30; padding:5px; font-size:bold; }';
-    this.blackedout = '.blackedout { position: absolute; z-index: 1010; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.65); display: none; }';
-    this.blackedoutVisible = '.blackedout-visible { display: block; }';
-    
-    const style = document.createElement('style');
-    style.setAttribute('id', 'EditContentStyles');
-    style.setAttribute('type', 'text/css');
-    style.innerHTML = this.modalStyle + this.modalStyleVisible + this.modalStyleClose + this.blackedout + this.blackedoutVisible;
-    document.getElementsByTagName('head')[0].appendChild(style);
-    document.body.appendChild(this.bodyBlackedout);
-    document.body.appendChild(this.modalHTML);
+  bindEventsMethods() {
+    this.keyDown = this.keyDown.bind(this);
+    this.editImage = this.editImage.bind(this);
+    this.editLink = this.editLink.bind(this);
+    this.addElement = this.addElement.bind(this);
+    this.liBlur = this.liBlur.bind(this);
   }
 
-  hideModal() {
-    this.modalHTML.classList.remove('modal-visible');
-    this.bodyBlackedout.classList.remove('blackedout-visible');
-    document.querySelector('.blackedout').removeEventListener('click', this.hideModal);
-    this.modalHTML.querySelector('.modal-closeBtn').removeEventListener('click', this.hideModal);
+  getAllDataIds() {
+    const allElements = [...document.getElementById('target').querySelectorAll('* > [data-id]:not(li)')];
+    const someElements = allElements.filter((element) => {
+      return !element.parentNode.dataset.id;
+    });
+    someElements.forEach((element) => {
+      if (this.editableElements.includes(element.tagName)) {
+        this.data[element.dataset.id] = element.innerHTML;
+      } else if(element.tagName === 'IMG') {
+        this.data[element.dataset.id] = element.src;
+      } else if(element.tagName === 'A') {
+        this.data[element.dataset.id] = element.href;
+      } else {
+        this.data[element.dataset.id] = [];
+        const children = [...element.querySelectorAll('* > [data-id]')];
+        children.forEach((child) => {
+          if (child.dataset.id == parseInt(child.dataset.id)) {
+            const grandSons = [...child.querySelectorAll('*')];
+            if (grandSons.length > 0) {
+              this.data[element.dataset.id][child.dataset.id] = {};
+              grandSons.forEach((grandSon) => { 
+                if(grandSon.tagName === 'A') {
+                  this.data[element.dataset.id][child.dataset.id] = grandSon.href;
+                } else {
+                  this.data[element.dataset.id][child.dataset.id][grandSon.dataset.id] = grandSon.innerHTML;
+                }
+              });
+            } else {
+              this.data[element.dataset.id][child.dataset.id] = child.innerHTML;
+            }
+          }
+        });
+      }
+    });
+    // console.log(this.data);
   }
 
-  openModal(content) {
-    this.modalHTML.classList.add('modal-visible');
-    this.bodyBlackedout.classList.add('blackedout-visible');
-    this.modalHTML.querySelector('#modal-content').innerHTML = content;
-    this.modalHTML.querySelector('.modal-closeBtn').addEventListener('click', this.hideModal.bind(this));
-    document.querySelector('.blackedout').addEventListener('click', this.hideModal.bind(this));
+  saveDatabase() {
+
   }
 
   createWorkLayers() {
@@ -69,13 +74,6 @@ class EditContent {
     this.target = document.createElement('div');
     this.target.id = 'target';
     document.body.appendChild(this.target);
-  }
-
-  async markContentEditable() {
-    this.createWorkLayers();
-    await this.loadPage();
-    await this.loadJson();
-    this.processData();
   }
 
   loadPage() {
@@ -92,59 +90,129 @@ class EditContent {
     });
   }
 
-  loadJson() {
-    return new Promise(async (resolve) => {
-      const response = await fetch(this.config.getDataJson)
-      if (!response.ok) {
-        const message = `Can't load the page: ${response.status}`;
-        throw new Error(message);
-      }
-      const database = await response.json()
-      this.database = database;
-      resolve();
-    });
+  async initEdition() {
+    this.bindEventsMethods();
+    this.createWorkLayers();
+    await this.loadPage();
+    this.processData(document.querySelector('main'));
+    this.getAllDataIds();
+    this.saveDatabase();
   }
 
-  processData(database = this.database) {
-    const keys = Object.keys(database);
-    keys.forEach((key) => {
-      this.processKey(database, key);
-    });
-  }
-
-  processKey(database, key) {
-    const [type, nameKey] = key.split('-');
-    if (type === 'obj') {
-      this.processData(database[key]);
+  keyDown(ev) {
+    if (ev.keyCode === 13 && !ev.shiftKey) {
+      ev.target.blur();
     }
-    if (type === 'arr') {
-      database[key].forEach((el) => {
-        this.processData(el);
+    if (ev.keyCode === 13 && ev.shiftKey) {
+      if (ev.target.write) { ev.target.write('\n'); }
+    }
+  }
+
+  editImage(ev) {
+    ev.stopPropagation();
+    ev.preventDefault();
+    this.modalLayer.contentHTML = 'ES UNA IMAGEN';
+    this.modalLayer.openModal();
+  }
+
+  editLink(ev) {
+    ev.stopPropagation();
+    ev.preventDefault();
+    this.modalLayer.contentHTML = 'ES UN ENLACE';
+    this.modalLayer.openModal();
+  }
+
+  liBlur(ev) {
+    const element = ev.target;
+    if (element.innerHTML === '' && element.parentNode.tagName !== 'LI') {
+      element.remove();
+    }
+    console.log('saving...' + element.dataset.id);
+    if (this.data[element.dataset.id]) {
+      this.data[element.dataset.id] = element.innerHTML;
+    }
+  }
+
+  addElement(ev) {
+    const elementId = ev.target.id.split('__')[0];
+    console.log('addElement in ' + elementId);
+    const ul = document.querySelector(`[data-id="${elementId}"]`);
+    const li = document.createElement('li');
+    const firstLi = ul.firstElementChild;
+    const liChildren = [...firstLi.children];
+    const nextId = parseInt(ul.lastElementChild.dataset.id) + 1;
+    if (liChildren.length > 0) {
+      li.dataset.id = nextId;
+      liChildren.forEach((element) => {
+        const elementB = element.cloneNode(true);
+        elementB.innerHTML = element.dataset.id;
+        elementB.addEventListener('blur', this.liBlur);
+        elementB.addEventListener('keydown', this.keyDown);
+        li.appendChild(elementB);
       });
-    }
-    if (type === 'link') {
-      const elementLink = document.querySelector(`[data-id=${key}]`);
-      elementLink.addEventListener('click', this.setLink.bind(this));
-    }
-    if (type === 'img') {
-      const elementImg = document.querySelector(`[data-id=${key}]`);
-      elementImg.addEventListener('click', this.setImage.bind(this));
-    }
-    if (type === 'txt') {
-      const element = document.querySelector(`[data-id=${key}]`);
-      element.setAttribute('contenteditable', true);
+      firstLi.parentNode.insertBefore(li, firstLi);
+    } else {
+      li.innerHTML = `new ${elementId}`;
+      li.dataset.id = nextId;
+      li.contentEditable = true;
+      li.addEventListener('blur', this.liBlur);
+      li.addEventListener('keydown', this.keyDown);
+      ul.appendChild(li);
     }
   }
 
-  setImage(ev) {
-    ev.stopPropagation();
-    ev.preventDefault();
-    console.log(ev.target);
+  createElementButton(element, callback, content) {
+    const addElementBtn = document.createElement('button');
+    addElementBtn.id = `${element.dataset.id}__Btn_${content}`;
+    addElementBtn.style.width = '10%';
+    addElementBtn.style.left = '90%';
+    addElementBtn.style.position = 'relative';
+    addElementBtn.style.fontWeight = 'bold';
+    addElementBtn.style.borderRadius = '5px';
+    addElementBtn.style.background = '#0F0';
+    addElementBtn.innerHTML = `${content}`;
+    addElementBtn.addEventListener('click', callback);
+    element.parentNode.insertBefore(addElementBtn, element);
   }
 
-  setLink(ev) {
-    ev.stopPropagation();
-    ev.preventDefault();
-    this.openModal(ev.target);
+  processData(element) {
+    const elements = [...element.children];
+    elements.forEach((element)=> {
+      if (element.dataset.id || element.parentNode.tagName === 'LI') {
+        if (this.editableElements.includes(element.tagName)) {
+          // console.log(element.dataset.id, element.tagName);
+          element.setAttribute('contenteditable', true);
+          element.addEventListener('blur', this.liBlur);
+          element.addEventListener('keydown', this.keyDown);
+        }
+        if (element.tagName === 'IMG') {
+          // console.log(element.dataset.id, element.tagName);
+          element.addEventListener('click', this.editImage);
+        }
+        if (element.tagName === 'A') {
+          // console.log(element.dataset.id, element.tagName);
+          element.addEventListener('click', this.editLink);
+        }
+        if (element.tagName === 'UL') {
+          if (element.dataset.add) {
+            this.createElementButton(element, this.addElement, '+');
+          } 
+          const liElements = [...element.children];
+          liElements.forEach((li)=> {
+            if ([...li.children].length === 0) {
+              // console.log(li.dataset.id, 'LI');
+              li.setAttribute('contenteditable', true);
+              li.addEventListener('blur', this.liBlur);
+              li.addEventListener('keydown', this.keyDown);
+            } else {
+              // console.log('process LI');
+              this.processData(li);
+            }
+          });
+        } 
+      } else {
+        this.processData(element);
+      }
+    })
   }
 }
