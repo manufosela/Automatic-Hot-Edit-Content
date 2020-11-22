@@ -12,7 +12,7 @@ export class EditContent {
     if (!errors) {
       this.initEdition();
     }
-    this.data = [];
+    this.data = {};
     this.modalLayer = new ModalLayer();
   }
 
@@ -62,7 +62,7 @@ export class EditContent {
   }
 
   saveDatabase() {
-
+    console.log(this.data);
   }
 
   createWorkLayers() {
@@ -130,6 +130,7 @@ export class EditContent {
     console.log('saving...' + element.dataset.id);
     if (this.data[element.dataset.id]) {
       this.data[element.dataset.id] = element.innerHTML;
+      this.saveDatabase();
     }
   }
 

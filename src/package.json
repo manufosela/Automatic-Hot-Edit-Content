@@ -5,7 +5,7 @@
   "main": "EditContent.js",
   "scripts": {
     "build": "rm -rf dist && mkdir dist && rollup -c",
-    "start": "es-dev-server --app-index /demo/index.html --node-resolve --watch --open",
+    "start": "es-dev-server --app-index demo/index.html --node-resolve --watch --open",
     "start:api": "node demo/api/index.js"
   },
   "repository": {

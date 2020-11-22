@@ -1,0 +1,103 @@
+{
+  "_base": {
+    "foto": "http://localhost:8000/demo/tu_foto.png",
+    "resumen-tu": "Fullstack Developer... tu cargo en 3 líneas máximo ",
+    "tecnologias-destacas": [
+      "Angular 11",
+      "Java 14",
+      "MySQL"
+    ],
+    "otras-tecnologias": [
+      "Conocimiento",
+      "Conocimiento",
+      "Conocimiento",
+      "Conocimiento",
+      "Conocimiento",
+      "Conocimiento",
+      "Conocimiento",
+      "Conocimiento",
+      "Conocimiento",
+      "Conocimiento"
+    ],
+    "otros-conocimientos": [
+      "Metodologias agile",
+      "Diseño",
+      "Otra cosa"
+    ],
+    "idiomas": [
+      "Ingles - A2",
+      "Ruso - Nativo",
+      "Suahili - C1"
+    ],
+    "enlaces-interes": [
+      "https://linkedin.com/mi-enlace-linkedin",
+      "https://github.com/mi-enlace-github"
+    ],
+    "saludo": "Hola.",
+    "nombreyapellido": "NOMBRE y APELLIDO",
+    "resumen": "Resúmete en una línea",
+    "descripcion": "Incluye una pequeña descripción de un máximo de 3 líneas sobre ti y tu trayectoria laboral.",
+    "formacion": [
+      {
+        "formacion-year": "2017",
+        "formacion-titulo": "Tipo de formación en dos líneas."
+      },
+      {
+        "formacion-year": "2010-2012",
+        "formacion-titulo": "Título de formación\n          "
+      }
+    ],
+    "cursos": [
+      {
+        "lugarfecha": "LUGAR Y FECHA",
+        "nombrecurso": "NOMBRE CERTIFICACIÓN/CURSO",
+        "descripcioncurso": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n          "
+      },
+      {
+        "lugarfecha": "LUGAR Y FECHA",
+        "nombrecurso": "NOMBRE CERTIFICACIÓN/CURSO",
+        "descripcioncurso": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n          "
+      },
+      {
+        "lugarfecha": "LUGAR Y FECHA",
+        "nombrecurso": "NOMBRE CERTIFICACIÓN/CURSO",
+        "descripcioncurso": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n          "
+      },
+      {
+        "lugarfecha": "LUGAR Y FECHA",
+        "nombrecurso": "NOMBRE CERTIFICACIÓN/CURSO",
+        "descripcioncurso": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\n          "
+      }
+    ],
+    "experiencia": [
+      {
+        "fecha": "MES 2010 - MES 2017",
+        "cargo-y-empresa": "Cargo y empresa",
+        "undefined": "Tecnologías usadas en el proyecto",
+        "tecnologias-usadas": "Java, Angular, NodeJS, Express, etc...",
+        "descripcion": "Descripción de funciones en el proyecto. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      },
+      {
+        "fecha": "MES 2010 - MES 2017",
+        "cargo-y-empresa": "Cargo y empresa",
+        "undefined": "Tecnologías usadas en el proyecto",
+        "tecnologias-usadas": "Java, Angular, NodeJS, Express, etc...",
+        "descripcion": "Descripción de funciones en el proyecto. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      },
+      {
+        "fecha": "MES 2010 - MES 2017",
+        "cargo-y-empresa": "Cargo y empresa",
+        "undefined": "Tecnologías usadas en el proyecto",
+        "tecnologias-usadas": "Java, Angular, NodeJS, Express, etc...",
+        "descripcion": "Descripción de funciones en el proyecto. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      },
+      {
+        "fecha": "MES 2010 - MES 2017",
+        "cargo-y-empresa": "Cargo y empresa",
+        "undefined": "Tecnologías usadas en el proyecto",
+        "tecnologias-usadas": "Java, Angular, NodeJS, Express, etc...",
+        "descripcion": "Descripción de funciones en el proyecto. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      }
+    ]
+  }
+}
